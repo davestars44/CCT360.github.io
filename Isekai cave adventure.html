@@ -9,19 +9,20 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play Isekai cave adventure.</tw-noscript></noscript></tw-story>
-<tw-storydata name="Isekai cave adventure" startnode="1" creator="Twine" creator-version="2.4.1" format="Harlowe" format-version="3.3.1" ifid="68337B70-C758-4FA9-86B9-CD7C9698C217" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
+<tw-storydata name="Isekai cave adventure" startnode="34" creator="Twine" creator-version="2.4.1" format="Harlowe" format-version="3.3.1" ifid="68337B70-C758-4FA9-86B9-CD7C9698C217" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css">
 tw-passage
 {
 	border-style: solid;
-	border-width: 5px;
+	border-width: 4px;
 	width: 1024px;
 	margin-left: 10px;
 	margin-right: 10px;
+  	padding: 10px;  
 }
 tw-story {
   color:#FFFFFF;
   background-color: #000000;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="775,25" size="100,100">Welcome $name to isekai cave adventure made by: David Hong in this game you were summoned from your world to defeat a mighty dragon that has taken the princess captive you must save her before it is to late.
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="775,25" size="100,100">Welcome $name to &#39;&#39;Isekai Cave Adventure&#39;&#39; made by: David Hong in this game you were summoned from your world to defeat a mighty dragon that has taken the princess captive you must save her before it is to late.
 you have been given a sword and 3 health potions from the kingdom.
 Pick your difficulty and then we can start the game 
 (link: &quot;Easy&quot;)[(set: $dif to &quot;easy&quot;), (goto:&quot;start&quot;)]
@@ -31,8 +32,7 @@ Pick your difficulty and then we can start the game
 (set: $hp = 100)
 (set: $hppot = 3)
 (if:$ft is 0)[(set: $dif = &quot;easy&quot;)]
-(if: $ft is 0)[(set: $name to (prompt:&quot;name is&quot;,&quot;&quot;))(set: $ft to 1)]
-(set: $f1 = 0)</tw-passagedata><tw-passagedata pid="2" name="gameover" tags="" position="975,50" size="100,100">Gameover  
+</tw-passagedata><tw-passagedata pid="2" name="gameover" tags="" position="975,50" size="100,100">Gameover  
 [[try again-&gt;start]]
 </tw-passagedata><tw-passagedata pid="3" name="real start" tags="" position="1025,200" size="100,100">&lt;img alt = &quot;Wolf&quot; src=&quot;https://i.imgur.com/H0Q0bl4.png&quot;,width=&quot;400&quot; 
      height=&quot;300&quot; &gt;
@@ -45,7 +45,7 @@ you continue though the cave and then a wolf pops out of the shadows
 you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
 (if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
 (if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
-(if: $ehp &lt;= 0)[ (go-to: &quot;cave2&quot;) ]</tw-passagedata><tw-passagedata pid="4" name="Heal" tags="" position="1500,100" size="100,100">you drank a healing potion you regain 30 hp
+(if: $ehp &lt;= 0)[ (go-to: &quot;cave2&quot;) ]</tw-passagedata><tw-passagedata pid="4" name="Heal" tags="" position="1500,100" size="100,100">(text-colour:#74F00F)you drank a healing potion you regain 30 hp
 
 (link-goto: &quot;Return&quot;, (history:)&#39;s last)
 (set: $hppot to $hppot - 1)</tw-passagedata><tw-passagedata pid="5" name="attack1" tags="" position="1350,125" size="100,100">(text-colour:#74F00F)[ you swing your sword around you did 40 damage]
@@ -109,7 +109,7 @@ what do you do
 </tw-passagedata><tw-passagedata pid="15" name="attack3" tags="" position="1650,125" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
 (text-colour:#F96C6C)[you are shaken off before you could attack you take 15 damage]
 (link-goto: &quot;Continue&quot;, (history:)&#39;s last)
-(set:$hp to $hp - 15)</tw-passagedata><tw-passagedata pid="16" name="goblin fight" tags="" position="300,100" size="100,100">you go into the forest that is in front of the cave and a goblin appears to fight you
+(set:$hp to $hp - 15)</tw-passagedata><tw-passagedata pid="16" name="goblin fight" tags="" position="300,100" size="100,100">You go into the forest that is in front of the cave and a goblin appears to fight you
 &lt;img alt = &quot;Goblin&quot; src=&quot;https://i.imgur.com/QrPNNpL.png
 &quot;,width=&quot;400&quot; 
      height=&quot;300&quot; &gt;
@@ -217,12 +217,14 @@ you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to
 (link-goto: &quot;Continue&quot;, (history:)&#39;s last)
 (if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 8)]]
 (if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 10)]]
-(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 15)]]</tw-passagedata><tw-passagedata pid="32" name="attack13" tags="" position="1025,425" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 15)]]</tw-passagedata><tw-passagedata pid="32" name="attack13" tags="" position="850,350" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
 (text-colour:#F96C6C)[you are shaken off before you could attack you take 15 damage]
 (link-goto: &quot;Continue&quot;, (history:)&#39;s last)
 (set:$hp to $hp - 15)</tw-passagedata><tw-passagedata pid="33" name="ending" tags="" position="1050,575" size="100,100">You have saved the princess and the people in the kingdom regard you as the hero   and you can decide to go home to your world or stay in this one but anyone you choose will lead to a wonderful life congrats on beating the dragon on $dif mode.
 [[Play again -&gt;start]]
-</tw-passagedata></tw-storydata>
+</tw-passagedata><tw-passagedata pid="34" name="name prompt" tags="" position="1375,0" size="100,100">(if: $ft is 0)[(set: $name to (prompt:&quot;name is&quot;,&quot;&quot;))(set: $ft to 1)]
+(if: $ft is 1) [(go-to:&quot;start&quot;)]
+(set: $f1 = 0)</tw-passagedata><tw-passagedata pid="35" name="Untitled Passage" tags="" position="1725,300" size="100,100"></tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _createForOfIteratorHelper(e,t){var n,r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=_unsupportedIterableToArray(e))||t&&e&&"number"==typeof e.length)return r&&(e=r),n=0,{s:t=function(){},n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:t};throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,o=!0,i=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return o=e.done,e},e:function(e){i=!0,a=e},f:function(){try{o||null==r.return||r.return()}finally{if(i)throw a}}}}function _slicedToArray(e,t){return _arrayWithHoles(e)||_iterableToArrayLimit(e,t)||_unsupportedIterableToArray(e,t)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,a,o=[],i=!0,s=!1;try{for(n=n.call(e);!(i=(r=n.next()).done)&&(o.push(r.value),!t||o.length!==t);i=!0);}catch(e){s=!0,a=e}finally{try{i||null==n.return||n.return()}finally{if(s)throw a}}return o}}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(n="Object"===n&&e.constructor?e.constructor.name:n)||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(e,t):void 0}}function _iterableToArray(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
