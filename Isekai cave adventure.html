@@ -21,21 +21,22 @@ tw-passage
 tw-story {
   color:#FFFFFF;
   background-color: #000000;
-}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="500,25" size="100,100">Welcome $name to isekai cave adventure in this game you were summoned from your world to defeat a mighty dragon that has taken the princess captive you must save her before it is to late.
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="start" tags="" position="775,25" size="100,100">Welcome $name to isekai cave adventure made by: David Hong in this game you were summoned from your world to defeat a mighty dragon that has taken the princess captive you must save her before it is to late.
+you have been given a sword and 3 health potions from the kingdom.
 Pick your difficulty and then we can start the game 
 (link: &quot;Easy&quot;)[(set: $dif to &quot;easy&quot;), (goto:&quot;start&quot;)]
 (link: &quot;HARD&quot;)[(set: $dif to &quot;hard&quot;), (goto:&quot;start&quot;)]
 (link: &quot;INSANITY&quot;)[(set: $dif to &quot;insanity&quot;), (goto:&quot;start&quot;)]
-[[Start game -&gt;load]]
+[[Start game -&gt;load1]]
 (set: $hp = 100)
 (set: $hppot = 3)
 (if:$ft is 0)[(set: $dif = &quot;easy&quot;)]
 (if: $ft is 0)[(set: $name to (prompt:&quot;name is&quot;,&quot;&quot;))(set: $ft to 1)]
-(set: $f1 = 0)</tw-passagedata><tw-passagedata pid="2" name="gameover" tags="" position="875,50" size="100,100">Gameover  
+(set: $f1 = 0)</tw-passagedata><tw-passagedata pid="2" name="gameover" tags="" position="975,50" size="100,100">Gameover  
 [[try again-&gt;start]]
-</tw-passagedata><tw-passagedata pid="3" name="real start" tags="" position="750,200" size="100,100">&lt;img alt = &quot;Wolf&quot; src=&quot;https://i.imgur.com/H0Q0bl4.png&quot;,width=&quot;400&quot; 
+</tw-passagedata><tw-passagedata pid="3" name="real start" tags="" position="1025,200" size="100,100">&lt;img alt = &quot;Wolf&quot; src=&quot;https://i.imgur.com/H0Q0bl4.png&quot;,width=&quot;400&quot; 
      height=&quot;300&quot; &gt;
-you find yourself in a cave and you must fight to survive an enemy appears its a wolf
+you continue though the cave and then a wolf pops out of the shadows
 (text-colour:#F96C6C)[Enemy hp $ehp]
 (text-colour:#74F00F)[your hp  $hp]
 (Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack1&quot;)]
@@ -44,69 +45,184 @@ you find yourself in a cave and you must fight to survive an enemy appears its a
 you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
 (if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
 (if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
-(if: $ehp &lt;= 0)[ (go-to: &quot;cave2&quot;) ]</tw-passagedata><tw-passagedata pid="4" name="Heal" tags="" position="925,375" size="100,100">you drank a healing potion you regain 30 hp
-(link-goto: &quot;Return&quot;, (history:)&#39;s last)
-(set: $hppot to $hppot - 1)</tw-passagedata><tw-passagedata pid="5" name="attack1" tags="" position="1400,100" size="100,100">(text-colour:#74F00F) you swing your sword around you did 40 damage
-(text-colour:#F96C6C) but as you attacked the wolf got a bite in  dealing 10 damage
-(link-goto: &quot;Contiune&quot;, (history:)&#39;s last)
-(set:$ehp to $ehp - 40)
-(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 5)]
-(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 10)]
-(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 15)]
+(if: $ehp &lt;= 0)[ (go-to: &quot;cave2&quot;) ]</tw-passagedata><tw-passagedata pid="4" name="Heal" tags="" position="1500,100" size="100,100">you drank a healing potion you regain 30 hp
 
-</tw-passagedata><tw-passagedata pid="6" name="cave2" tags="" position="100,300" size="100,100">After a long fought battle you have slain the wolf
+(link-goto: &quot;Return&quot;, (history:)&#39;s last)
+(set: $hppot to $hppot - 1)</tw-passagedata><tw-passagedata pid="5" name="attack1" tags="" position="1350,125" size="100,100">(text-colour:#74F00F)[ you swing your sword around you did 40 damage]
+(set:$ehp to $ehp - 40)
+(if: $ehp &gt; 0)[(text-colour:#F96C6C)[but as you attack the wolf got a bite in ]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(text-colour:#F96C6C)[dealing 7 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(text-colour:#F96C6C)[dealing 12 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(text-colour:#F96C6C)[dealing 13 damage]]]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 7)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 12)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 13)]]
+
+</tw-passagedata><tw-passagedata pid="6" name="cave2" tags="" position="175,300" size="100,100">After a long fought battle you have slain the wolf
 do you
 [[Continue down the cave-&gt;load 2]] or [[flee-&gt;gameover2]]
-(link: &quot;Look around&quot;)[you look around and find a potion (set: $hppot = $hppot +1)]</tw-passagedata><tw-passagedata pid="7" name="load" tags="" position="75,125" size="100,100">(if: $dif is &quot;easy&quot;)[(if:$r1 is 0)[(set: $ehp = 240)(set: $r1 = 1)]]
-(if: $dif is &quot;hard&quot;)[(if:$r1 is 0)[(set: $ehp = 300)(set: $r1 = 1)]]
-(if: $dif is &quot;insanity&quot;)[(if:$r1 is 0)[(set: $ehp = 400)(set: $r1 = 1)]]
-(set: $silv = 0)
+(link: &quot;Look around&quot;)[you look around and find a potion (set: $hppot = $hppot +1)]</tw-passagedata><tw-passagedata pid="7" name="load" tags="" position="125,100" size="100,100">(if: $dif is &quot;easy&quot;)[(set: $ehp = 240)]
+(if: $dif is &quot;hard&quot;)[(set: $ehp = 300)]
+(if: $dif is &quot;insanity&quot;)[(set: $ehp = 400)]
 (set: $f1 = 0)
-(go-to:&quot;real start2&quot;)
-</tw-passagedata><tw-passagedata pid="8" name="load 2" tags="" position="200,500" size="100,100">(if: $dif is &quot;easy&quot;)[(if:$r1 is 0)[(set: $ehp = 300)(set: $r1 = 1)]]
-(if: $dif is &quot;hard&quot;)[(if:$r1 is 0)[(set: $ehp = 400)(set: $r1 = 1)]]
-(if: $dif is &quot;insanity&quot;)[(if:$r1 is 0)[(set: $ehp = 500)(set: $r1 = 1)]]
+(go-to:&quot;real start&quot;)
+</tw-passagedata><tw-passagedata pid="8" name="load 2" tags="" position="200,500" size="100,100">(if: $dif is &quot;easy&quot;)[(set: $ehp = 300)]]
+(if: $dif is &quot;hard&quot;)[(set: $ehp = 350)]]
+(if: $dif is &quot;insanity&quot;)[(set: $ehp = 400)]]
 (go-to:&quot;cave3&quot;)
-</tw-passagedata><tw-passagedata pid="9" name="gameover2" tags="" position="1125,500" size="100,100">you think of fleeing but in the end are you sure about this choice( you can only choose to flee 1 time)
+</tw-passagedata><tw-passagedata pid="9" name="gameover2" tags="" position="1200,475" size="100,100">you think of fleeing but in the end are you sure about this choice( you can only choose to flee 1 time)
 (set: $f1 = 1)
 [[Confirm-&gt;ending1]]
 (link-goto: &quot;go back to save the princess&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="10" name="ending1" tags="" position="1450,450" size="100,100">you failed to save the princess and now you are trapped in this world with nowhere to go
 the end 
-[[try again-&gt;start]]</tw-passagedata><tw-passagedata pid="11" name="cave3" tags="" position="650,575" size="100,100">&lt;img alt = &quot;Wolf&quot; src=&quot;https://i.imgur.com/H0Q0bl4.png&quot;,width=&quot;400&quot; 
+[[try again-&gt;start]]</tw-passagedata><tw-passagedata pid="11" name="cave3" tags="" position="825,500" size="100,100">&lt;img alt = &quot;Skeleton&quot; src=&quot;https://imgur.com/NQPogAH.png&quot;,width=&quot;400&quot; 
      height=&quot;300&quot; &gt;
-you find yourself in a cave and you must fight to survive an enemy appears its a wolf
+you continue down the cave and an undead enemy attacks you
 (text-colour:#F96C6C)[Enemy hp $ehp]
 (text-colour:#74F00F)[your hp  $hp]
-(Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack1&quot;)]
-(if:$silv is 1)[(Link:&quot;You attack it with silver&quot;)[(go-to: &quot;attack2&quot;)]](if:$silv is 0)[Locked option]
-(Link:&quot;You jump on its back and attack&quot;)[(go-to: &quot;attack3&quot;)]
+(Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack9&quot;)]
+(if: $hppot &gt; 0)[(Link:&quot;You throw your healing potion at it&quot;)[(go-to: &quot;attack10&quot;)]]
 you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
 (if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
 (if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
-(if: $ehp &lt;= 0)[ (go-to: &quot;cave2&quot;) ]</tw-passagedata><tw-passagedata pid="12" name="real start2" tags="" position="300,200" size="100,100">You have entered the cave to save the princess what do you do
+(if: $ehp &lt;= 0)[ (go-to: &quot;cave4&quot;) ]</tw-passagedata><tw-passagedata pid="12" name="real start2" tags="" position="775,225" size="100,100">You have defeated the goblin and can enter the cave to save the princess 
+what do you do
 [[flee-&gt;gameover2]]
-[[press onwards -&gt;real start]]
+[[press onwards -&gt;load 3]]
 (if: $silv is 0)[[[look around the entrance -&gt;item1]]]
-</tw-passagedata><tw-passagedata pid="13" name="real" tags="" position="325,800" size="100,100"></tw-passagedata><tw-passagedata pid="14" name="item1" tags="" position="600,350" size="100,100">as you look around the entrance of the cave you find some silver that seems to be broken do you pick it up
+</tw-passagedata><tw-passagedata pid="13" name="item1" tags="" position="525,150" size="100,100">as you look around the entrance of the cave you find some silver that seems to be broken do you pick it up
 (link: &quot;pick it up&quot;)[(set: $silv to 1) you obtained silver]
 [[go back -&gt;real start2]]
-</tw-passagedata><tw-passagedata pid="15" name="attack2" tags="" position="1250,100" size="100,100">(text-colour:#74F00F)[you attacked it with silver dealing 80 damage]
-(text-colour:#F96C6C)[but as you attacked the wolf got a bite in ]
-(text-colour:#F96C6C)[(if: $dif is &quot;easy&quot;)[dealing 10 damage]]
-(text-colour:#F96C6C)[(if: $dif is &quot;hard&quot;)[dealing 20 damage]]
-(text-colour:#F96C6C)[(if: $dif is &quot;insanity&quot;)[dealing 30 damage]]
-(link-goto: &quot;Contiune&quot;, (history:)&#39;s last)
+</tw-passagedata><tw-passagedata pid="14" name="attack2" tags="" position="1425,275" size="100,100">(text-colour:#74F00F)[you attacked it with silver dealing 80 damage]
 (set:$ehp to $ehp - 80)
-(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 5)]
-(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 10)]
-(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 15)]
+(if: $ehp &gt; 0)[(text-colour:#F96C6C)[but as you attack the wolf got a bite in weakly ]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(text-colour:#F96C6C)[dealing 4 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(text-colour:#F96C6C)[dealing 8 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(text-colour:#F96C6C)[dealing 10 damage]]]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 4)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 8)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 10)]]
 
 
-
-</tw-passagedata><tw-passagedata pid="16" name="attack3" tags="" position="1550,100" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
+</tw-passagedata><tw-passagedata pid="15" name="attack3" tags="" position="1650,125" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
 (text-colour:#F96C6C)[you are shaken off before you could attack you take 15 damage]
-(link-goto: &quot;Contiune&quot;, (history:)&#39;s last)
-(set:$hp to $hp - 15)</tw-passagedata></tw-storydata>
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(set:$hp to $hp - 15)</tw-passagedata><tw-passagedata pid="16" name="goblin fight" tags="" position="300,100" size="100,100">you go into the forest that is in front of the cave and a goblin appears to fight you
+&lt;img alt = &quot;Goblin&quot; src=&quot;https://i.imgur.com/QrPNNpL.png
+&quot;,width=&quot;400&quot; 
+     height=&quot;300&quot; &gt;
+(text-colour:#F96C6C)[Enemy hp $ehp]
+(text-colour:#74F00F)[your hp  $hp]
+(Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack4&quot;)]
+(Link:&quot;You drop gold&quot;)[(go-to: &quot;attack5&quot;)]
+you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
+(if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
+(if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
+(if: $ehp &lt;= 0)[ (go-to: &quot;real start2&quot;) ]</tw-passagedata><tw-passagedata pid="17" name="load1" tags="" position="425,0" size="100,100">(if: $dif is &quot;easy&quot;)[(set: $ehp = 40)]
+(if: $dif is &quot;hard&quot;)[(set: $ehp = 60)]
+(if: $dif is &quot;insanity&quot;)[(set: $ehp = 80)]
+(set: $silv = 0)
+(set: $f1 = 0)
+(go-to:&quot;goblin fight&quot;)</tw-passagedata><tw-passagedata pid="18" name="attack4" tags="" position="1225,25" size="100,100">(text-colour:#74F00F) [you swing your sword at the goblin dealing 40 damage]
+(set:$ehp to $ehp - 40)
+(if: $ehp &gt; 0)[(text-color:#F96C6C) [the goblin hits you for 5 damage]]
+(if: $ehp &gt; 0)[(set: $hp to $hp - 5) ]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="19" name="load 3" tags="" position="475,350" size="100,100">(if: $dif is &quot;easy&quot;)[(set: $ehp = 100)]
+(if: $dif is &quot;hard&quot;)[(set: $ehp = 150)]
+(if: $dif is &quot;insanity&quot;)[(set: $ehp = 180)]
+(set: $f1 = 0)
+(go-to:&quot;bat fight&quot;)
+</tw-passagedata><tw-passagedata pid="20" name="bat fight" tags="" position="400,525" size="100,100">you enter the Cave and you see a hoard of bats
+&lt;img alt = &quot;bats&quot; src=&quot;https://i.imgur.com/gwGLSqa.jpg
+&quot;,width=&quot;400&quot; 
+     height=&quot;300&quot; &gt;
+(text-colour:#F96C6C)[Enemy hp $ehp]
+(text-colour:#74F00F)[your hp  $hp]
+(Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack6&quot;)]
+(Link:&quot;scream&quot;)[(go-to: &quot;attack7&quot;)]
+(Link:&quot;try to run past the small bats&quot;)[(go-to: &quot;attack8&quot;)]
+you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
+(if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
+(if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
+(if: $ehp &lt;= 0)[ (go-to: &quot;load&quot;) ]</tw-passagedata><tw-passagedata pid="21" name="attack6" tags="" position="1250,325" size="100,100">(text-colour:#74F00F) [you swing your sword at the bats dealing 40 damage]
+(set:$ehp to $ehp - 40)
+(if: $ehp &gt; 0)[(text-color:#F96C6C) [the bats hits you for 5 damage]]
+(if: $ehp &gt; 0)[(set: $hp to $hp - 5) ]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)</tw-passagedata><tw-passagedata pid="22" name="attack7" tags="" position="1625,500" size="100,100">(text-colour:#74F00F) [The scream is very effective as the bats do not like the sound and you take the opportunity to deal 50 damage]
+(set:$ehp to $ehp - 50)
+(if: $ehp &gt; 0)[(text-color:#F96C6C) [as one of the bats retreats they deal 3 damage]]
+(if: $ehp &gt; 0)[(set:$hp to $hp - 3)]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+</tw-passagedata><tw-passagedata pid="23" name="attack8" tags="" position="1550,300" size="100,100">(text-colour:#74F00F)[you try to runaway]
+(text-colour:#F96C6C)[you can not escape and the bats bite you dealing 10 damage]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(set:$hp to $hp - 10)</tw-passagedata><tw-passagedata pid="24" name="attack5" tags="" position="1550,625" size="100,100">(text-colour:#74F00F) [You droped gold which distracted the goblin allowing for you to get a free hit 50 damage]
+(set:$ehp to $ehp - 50)
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+</tw-passagedata><tw-passagedata pid="25" name="cave4" tags="" position="650,500" size="100,100">You continue down the cave and find the dragons door
+what do you do
+[[press onwards though the final door-&gt;load 4]]
+(link: &quot;Rest&quot;)[(set: $hp to 100) after a rest at the door you have recovered to 100 hp]
+(link: &quot;look around&quot;)[(set: $s to 1)(set: $hppot to $hppot + 3) you find a pool of water and a chest with 3 healing potions]
+[[flee-&gt;gameover2]]
+
+</tw-passagedata><tw-passagedata pid="26" name="load 4" tags="" position="725,650" size="100,100">(if: $dif is &quot;easy&quot;)[(set: $ehp = 450)]
+(if: $dif is &quot;hard&quot;)[(set: $ehp = 500)]
+(if: $dif is &quot;insanity&quot;)[(set: $ehp = 750)]
+(set: $f1 = 0)
+(go-to:&quot;Final fight&quot;)
+</tw-passagedata><tw-passagedata pid="27" name="attack10" tags="" position="1675,625" size="100,100">(text-colour:#74F00F) [You threw a healing potion at the undead dealing 100 damage]
+(set:$ehp to $ehp - 100)
+(if: $ehp &gt; 0)[(text-color:#F96C6C) [the undead retailaites with a weak slash dealing 5 damage]]
+(if: $ehp &gt; 0)[(set:$hp to $hp - 5)]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(set: $hppot to $hppot - 1)</tw-passagedata><tw-passagedata pid="28" name="attack9" tags="" position="1450,750" size="100,100">(text-colour:#74F00F)[ you swing your sword around you did 40 damage]
+(set:$ehp to $ehp - 40)
+(if: $ehp &gt; 0)[(text-colour:#F96C6C)[but as you attack the undead reacts with its own attack ]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(text-colour:#F96C6C)[dealing 8 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(text-colour:#F96C6C)[dealing 12 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(text-colour:#F96C6C)[dealing 13 damage]]]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 8)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 12)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 13)]]
+</tw-passagedata><tw-passagedata pid="29" name="Final fight" tags="" position="550,700" size="100,100">&lt;img alt = &quot;Dragon&quot; src=&quot;https://i.imgur.com/2dgWgb7.png&quot;,width=&quot;400&quot; 
+     height=&quot;300&quot; &gt;
+As you enter the room you see the giant dragon that is your final trial to save the princess.
+(text-colour:#F96C6C)[Enemy hp $ehp]
+(text-colour:#74F00F)[your hp  $hp]
+(Link:&quot;Attack with your sword&quot;)[(go-to: &quot;attack11&quot;)]
+(if:$s is 1)[(Link:&quot;Use water from the pool&quot;)[(go-to: &quot;attack12&quot;)]](if:$s is 0)[Locked option]
+(Link:&quot;jump on it&quot;)[(go-to: &quot;attack13&quot;)]
+you have $hppot healing potion (if: $hppot &gt; 0)[(link:&quot;would you like to use them&quot;)[(set:$hp to $hp + 30)(go-to:&quot;Heal&quot;)]]
+(if: $f1 is 0) [(link:&quot;Flee&quot;)[(go-to:&quot;gameover2&quot;)]]
+(if: $hp &lt;= 0)[ (go-to: &quot;gameover&quot;) ]
+(if: $ehp &lt;= 0)[ (go-to: &quot;ending&quot;) ]</tw-passagedata><tw-passagedata pid="30" name="attack11" tags="" position="1125,700" size="100,100">(text-colour:#74F00F)[ you swing your sword around you did 40 damage]
+(set:$ehp to $ehp - 40)
+(if: $ehp &gt; 0)[(text-colour:#F96C6C)[the dragon breaths it fire on you]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(text-colour:#F96C6C)[dealing 10 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(text-colour:#F96C6C)[dealing 13 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(text-colour:#F96C6C)[dealing 16 damage]]]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 10)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 13)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 16)]]</tw-passagedata><tw-passagedata pid="31" name="attack12" tags="" position="1250,750" size="100,100">(text-colour:#74F00F)[you throw water from the pool of water dealing 70 damage]
+(set:$ehp to $ehp - 70)
+(if: $ehp &gt; 0)[(text-colour:#F96C6C)[the dragon breaths it fire on you but it was weaken but the water]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(text-colour:#F96C6C)[dealing 8 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(text-colour:#F96C6C)[dealing 10 damage]]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(text-colour:#F96C6C)[dealing 15 damage]]]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(if: $ehp &gt; 0)[(if: $dif is &quot;easy&quot;)[(set:$hp to $hp - 8)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;hard&quot;)[(set:$hp to $hp - 10)]]
+(if: $ehp &gt; 0)[(if: $dif is &quot;insanity&quot;)[(set:$hp to $hp - 15)]]</tw-passagedata><tw-passagedata pid="32" name="attack13" tags="" position="1025,425" size="100,100">(text-colour:#74F00F)[you try to attack the enemy and jumped on his back]
+(text-colour:#F96C6C)[you are shaken off before you could attack you take 15 damage]
+(link-goto: &quot;Continue&quot;, (history:)&#39;s last)
+(set:$hp to $hp - 15)</tw-passagedata><tw-passagedata pid="33" name="ending" tags="" position="1050,575" size="100,100">You have saved the princess and the people in the kingdom regard you as the hero   and you can decide to go home to your world or stay in this one but anyone you choose will lead to a wonderful life congrats on beating the dragon on $dif mode.
+[[Play again -&gt;start]]
+</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _createForOfIteratorHelper(e,t){var n,r="undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(!r){if(Array.isArray(e)||(r=_unsupportedIterableToArray(e))||t&&e&&"number"==typeof e.length)return r&&(e=r),n=0,{s:t=function(){},n:function(){return n>=e.length?{done:!0}:{done:!1,value:e[n++]}},e:function(e){throw e},f:t};throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}var a,o=!0,i=!1;return{s:function(){r=r.call(e)},n:function(){var e=r.next();return o=e.done,e},e:function(e){i=!0,a=e},f:function(){try{o||null==r.return||r.return()}finally{if(i)throw a}}}}function _slicedToArray(e,t){return _arrayWithHoles(e)||_iterableToArrayLimit(e,t)||_unsupportedIterableToArray(e,t)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,a,o=[],i=!0,s=!1;try{for(n=n.call(e);!(i=(r=n.next()).done)&&(o.push(r.value),!t||o.length!==t);i=!0);}catch(e){s=!0,a=e}finally{try{i||null==n.return||n.return()}finally{if(s)throw a}}return o}}function _arrayWithHoles(e){if(Array.isArray(e))return e}function _toConsumableArray(e){return _arrayWithoutHoles(e)||_iterableToArray(e)||_unsupportedIterableToArray(e)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(e,t){if(e){if("string"==typeof e)return _arrayLikeToArray(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Map"===(n="Object"===n&&e.constructor?e.constructor.name:n)||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(e,t):void 0}}function _iterableToArray(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}function _arrayWithoutHoles(e){if(Array.isArray(e))return _arrayLikeToArray(e)}function _arrayLikeToArray(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
